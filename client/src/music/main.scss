@@ -1,0 +1,174 @@
+.grid-container{
+    height:100vh;
+    display:grid;
+    grid-template-areas:
+    "header"
+    "body"
+    "footer";
+    grid-template-rows:40px 1fr 50px;
+    grid-template-columns:1fr;
+}
+.header{
+    grid-area:header;
+}
+.body{
+    grid-area:body;
+    overflow: auto;
+}
+.footer{
+    grid-area:footer;
+}
+.music{
+    &-head{
+        background: #000;
+        padding: 0 20px;
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        &-title{
+            font-size: 14px;
+            color: #e2e2e2;
+            line-height: 40px;
+        }
+        &-search{
+            input{
+                padding:0 6px;
+                border-radius: 5px;
+                height: 26px;
+                width: 200px; 
+            }
+        }
+    }
+    &-body{
+        background: #262626;
+        &-list{
+            color: #ccc;
+            li{
+                cursor: pointer;
+                opacity: 0.6;
+                font-size: 14px;
+                padding: 8px 20px;
+                &:hover{
+                    background: #000;
+                    opacity: 1;
+                }
+            }
+            &-current{
+                background: #121212;
+            }
+            &-title{
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                max-width: 400px;
+                &-text{
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+            }
+            &-cplay{
+                font-size: 20px;
+            }
+        }
+    }
+    &-footer{
+        background-color: #333;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        .left-controler{
+            display: flex;
+            align-items: center;
+            &-prev,&-play,&-next{
+                cursor: pointer;
+                font-size: 28px;
+                opacity: 0.6;
+                vertical-align: middle;
+                padding:5px
+            }
+            &-prev:hover,&-play:hover,&-next:hover{
+                opacity: 1;
+            }
+            &-play{
+                font-size: 36px;
+            }
+        }
+        .main-controler {
+            margin-left: 20px;
+            display: flex;
+            width: 60%;
+            &>div:first-child{
+                flex:1;
+                display:flex;
+                flex-direction: column;
+            }
+            &-title,&-ttime{
+                color:#b9b9b9
+            }
+            &-title{
+                font-size: 14px;
+                padding: 0 0 5px 0;
+            }
+            &-ttime{
+                font-size: 12px;
+                display: flex;
+                align-items: flex-end;
+                margin: 18px 0 0 20px;
+            }
+            &-progress {
+                position: relative;
+            }
+            &-mode{
+                display: flex;
+                align-items: flex-end;
+                padding-left: 20px;
+            }
+            .progress {
+                width: 100%;
+                background: #000;
+                height: 8px;
+                border-radius: 5px;
+                position: relative;
+                &-buffered{
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    height: 8px;
+                    background: #c7c7c7;
+                    opacity: 0.4;
+                    z-index: 1;
+                    border-radius: 5px;
+                }
+                &-played{
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    height: 9px;
+                    background: #e11b22;
+                    z-index: 2;
+                    border-radius: 5px;
+                    &-flag{
+                        position: absolute;
+                        left: -4px;
+                        top: -4px;
+                        height: 16px;
+                        width: 16px;
+                        z-index: 3;
+                        border-radius: 50%;
+                        background: #fff;
+                        &-inside{
+                            position: relative;
+                            background: #e11b22;
+                            top: 4px;
+                            left: 4px;
+                            height: 8px;
+                            width: 8px;
+                            z-index: 4;
+                            border-radius: 50%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
