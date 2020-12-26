@@ -25,7 +25,7 @@ module.exports = {
 		httpServer: {
 			security: {
 				noAuthorityRoutes: [
-					'/mount/*',
+					'/mount/**',
 					'/public/**'
 				]
 			},

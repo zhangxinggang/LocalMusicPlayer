@@ -80,10 +80,22 @@ class App extends Component {
       return "00:00";
     }
   }
+  keepPlayInView(){
+    const { currentMusic } = this.state
+    let musicDom=document.getElementById('music_item_'+currentMusic.id)
+    let musicListDom=document.getElementsByClassName('music-body')[0]
+    let musicListDomAttr=musicListDom.getBoundingClientRect()
+    if(musicDom.offsetTop>musicListDomAttr.height){
+      setTimeout(()=>{
+        musicListDom.scrollTop=musicDom.offsetTop-musicListDomAttr.height
+      },0)
+    }
+  }
   // 播放
   onPlay = () => {
     this.setState({ isPause: false })
     this.audio.play()
+    this.keepPlayInView()
   }
   // 暂停
   onPause = () => {
@@ -241,6 +253,7 @@ class App extends Component {
                   return (
                     <li
                       key={item.id}
+                      id={'music_item_'+item.id}
                       className={item.id==currentMusic.id?'music-body-list-current':''}
                       onClick={() => this.onMusicListItemClick(item.id)}
                     >
