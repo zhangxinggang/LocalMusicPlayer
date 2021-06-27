@@ -1,7 +1,12 @@
 import React, { Component } from "react"
-import axios from '@g/http.js'
+import Http from '@g/http.js'
 import './main.scss'
 import "./static/style.css";
+let axios = new Http({
+  apiList:{
+		getMusic:{method:'get',url:'/api-music/musicList'}
+	}
+})
 class App extends Component {
   constructor(props) {
     super(props);
@@ -201,9 +206,7 @@ class App extends Component {
   }
   componentWillMount(){
     axios.request({
-      url:'/api-music/musicList',
-      showConfig:true,
-			method:'get',
+			name:'getMusic'
     }).then(res=>{
       this.setState({
         musicList:res.data,

@@ -6,8 +6,11 @@ const musicDirs=[{
 module.exports = {
 	services: {
 		viewServer:{
-			entry:"./client/src",
+			entry:{
+				index: path.resolve(__dirname, 'client/src/music/index.js')
+			},
 			devServer: {
+				port: 8082,
 				proxy: {
 					'/api-music/**': {
 						target: 'http://127.0.0.1:8081',
